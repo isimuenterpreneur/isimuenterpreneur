@@ -8,13 +8,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ISIMU ENTREPRENEUR | Building Solutions for Everyday Life",
-  description: "ISIMU Entrepreneur develops digital products, technology solutions, and innovative businesses that create real impact.",
+  title: "ISIMU ENTREPRENEUR | Company Profile",
+  description:
+    "ISIMU Entrepreneur develops apps, digital solutions, and business units with real impact.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="id">
       <body className={poppins.className}>{children}</body>
     </html>
   );
