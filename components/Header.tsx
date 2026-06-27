@@ -47,11 +47,11 @@ const Header = () => {
             </div>
           </Link>
           <nav className="hidden items-center gap-8 text-base font-medium text-[#374151] xl:flex">
-            {menuItems.map((link) => (
-              <a key={link} href={`#${link.toLowerCase().replace(/\s+/g, "-")}`} className="transition hover:text-[#1F2937]">{link}</a>
+            {menuItems.map((item) => (
+              <Link key={item} href={`#${item.toLowerCase().replace(/\s+/g, "-")}`} className="transition hover:text-[#1F2937]">{item}</Link>
             ))}
           </nav>
-          <a href="#contact" className="hidden rounded-full bg-[#111111] px-6 py-3 text-base font-semibold text-white transition hover:bg-black/80 xl:inline-flex">Get Started</a>
+          <Link href="#contact" className="hidden rounded-full bg-[#111111] px-6 py-3 text-base font-semibold text-white transition hover:bg-black/80 xl:inline-flex">Get Started</Link>
         </motion.div>
       </div>
     </motion.header>

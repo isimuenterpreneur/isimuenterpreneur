@@ -15,14 +15,18 @@ export default function AdminBusinessUnitsPage() {
   const { user, loading: authLoading } = useFirebaseAuth();
   const { data, loading, error } = useFirebaseData<BusinessUnit>("business_units");
   const [form, setForm] = useState(initial);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSaving(true);
     try {
-      await writeRecord("business_units", form);
+      const path = editingId ? `business_units/${editingId}` : "business_units";
+      const dataToWrite = editingId ? { ...form, id: editingId } : form;
+      await writeRecord(path, dataToWrite);
       setForm(initial);
+      setEditingId(null);
     } finally {
       setSaving(false);
     }
@@ -30,6 +34,11 @@ export default function AdminBusinessUnitsPage() {
 
   const handleImageUpload = (url: string) => {
     setForm((prev) => ({ ...prev, image: url }));
+  };
+
+  const handleEditClick = (item: BusinessUnit) => {
+    setEditingId(item.id);
+    setForm({ name: item.name, description: item.description, image: item.image });
   };
 
   if (authLoading) return <p className="p-10 text-white">Memuat...</p>;
@@ -63,6 +72,9 @@ export default function AdminBusinessUnitsPage() {
                       <p className="mt-2 text-sm text-slate-400">{item.description}</p>
                     </div>
                     <div className="flex flex-col gap-2">
+                      <button className="rounded-full border border-primary px-4 py-2 text-primary transition hover:bg-primary/10" onClick={() => handleEditClick(item)}>
+                        Edit
+                      </button>
                     <button
                       className="rounded-full border border-red-500 px-4 py-2 text-red-400 transition hover:bg-red-500/10"
                       onClick={async () => {
@@ -81,7 +93,7 @@ export default function AdminBusinessUnitsPage() {
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-black/70 p-6 shadow-soft">
-            <h2 className="text-xl font-semibold text-white">Tambah Unit Usaha</h2>
+            <h2 className="text-xl font-semibold text-white">{editingId ? "Edit Unit Usaha" : "Tambah Unit Usaha"}</h2>
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
               <label className="block text-sm text-slate-200">
                 Nama
@@ -108,7 +120,7 @@ export default function AdminBusinessUnitsPage() {
                 {form.image && <p className="text-xs text-slate-400">URL Gambar: {form.image}</p>}
               </div>
               <button type="submit" disabled={saving} className="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-sm font-semibold text-black transition hover:bg-[#d7a600] disabled:opacity-60">
-                {saving ? "Menyimpan..." : "Simpan Unit Usaha"}
+                {saving ? "Menyimpan..." : editingId ? "Update Unit Usaha" : "Simpan Unit Usaha"}
               </button>
             </form>
           </div>

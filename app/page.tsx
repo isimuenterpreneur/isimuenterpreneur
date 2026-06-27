@@ -126,13 +126,13 @@ export default async function HomePage() {
                 </p>
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start pt-2">
-                  <a href="#products" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-8 py-4 text-base font-semibold text-white transition hover:bg-black/80">
+                  <Link href="#products" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#111111] px-8 py-4 text-base font-semibold text-white transition hover:bg-black/80">
                     Explore Products
                     <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a href="#contact" className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-4 text-base font-semibold text-[#1F2937] transition hover:border-gray-400 hover:bg-gray-50">
+                  </Link>
+                  <Link href="#contact" className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-8 py-4 text-base font-semibold text-[#1F2937] transition hover:border-gray-400 hover:bg-gray-50">
                     Contact Us
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex justify-center gap-8 pt-8 lg:justify-start">
                   {statisticList.slice(0, 3).map(stat => (
@@ -391,9 +391,9 @@ export default async function HomePage() {
       <section className="bg-[#111111] text-white">
         <div className="mx-auto max-w-[1320px] px-6 py-24 text-center lg:px-10">
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">Ready to Build the Future Together?</h2>
-          <a href="#contact" className="mt-8 inline-flex items-center justify-center rounded-full bg-[#F2C200] px-8 py-4 text-base font-semibold text-black transition hover:bg-[#FFD84D]">
+          <Link href="#contact" className="mt-8 inline-flex items-center justify-center rounded-full bg-[#F2C200] px-8 py-4 text-base font-semibold text-black transition hover:bg-[#FFD84D]">
             Get Started
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -414,7 +414,7 @@ export default async function HomePage() {
               <p className="font-semibold text-white">Navigation</p>
               <ul className="mt-4 space-y-2 text-sm text-gray-400">
                 {['Home', 'About', 'Products', 'Business', 'News', 'Contact'].map((link) => (
-                  <li key={link}><a href={`#${link.toLowerCase().replace(/\s+/g, "-")}`} className="transition hover:text-white">{link}</a></li>
+                  <li key={link}><Link href={`#${link.toLowerCase().replace(/\s+/g, "-")}`} className="transition hover:text-white">{link}</Link></li>
                 ))}
               </ul>
             </div>
@@ -422,7 +422,7 @@ export default async function HomePage() {
               <p className="font-semibold text-white">Products</p>
               <ul className="mt-4 space-y-2 text-sm text-gray-400">
                 {productList.slice(0, 4).map((product) => (
-                  <li key={product.id}><a href="#products" className="transition hover:text-white">{product.name}</a></li>
+                  <li key={product.id}><Link href="#products" className="transition hover:text-white">{product.name}</Link></li>
                 ))}
               </ul>
             </div>
@@ -430,7 +430,7 @@ export default async function HomePage() {
               <p className="font-semibold text-white">Business Units</p>
               <ul className="mt-4 space-y-2 text-sm text-gray-400">
                 {businessList.slice(0, 4).map((business) => (
-                  <li key={business.id}><a href="#business-units" className="transition hover:text-white">{business.name}</a></li>
+                  <li key={business.id}><Link href="#business-units" className="transition hover:text-white">{business.name}</Link></li>
                 ))}
               </ul>
             </div>
