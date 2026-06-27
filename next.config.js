@@ -5,9 +5,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "https://drive.google.com/file/d/1wgllVj5PnBi7JOxuOe_TTLdiAXgr8I60/view?usp=drive_link",
+        hostname: "images.unsplash.com",
       },
-      // Tambahkan hostname lain di sini jika Anda menggunakan gambar dari domain lain
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com", // Untuk gambar dari Google Drive
+      },
     ],
   },
 };
