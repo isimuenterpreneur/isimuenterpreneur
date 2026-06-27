@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "enterpreneurisimu"
+  },
+  "targets": {
+    "enterpreneurisimu": {
+      "hosting": {
+        "isimuenterpreneur": [
+          "isimuenterpreneur"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
