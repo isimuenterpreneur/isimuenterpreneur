@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { ArrowRight, Briefcase, Link, Mail, MapPin, Users, Zap } from "lucide-react";
 import { ArrowRight, Briefcase, Mail, MapPin, Users, Zap } from "lucide-react";
+import Link from "next/link";
 import MotionWrapper from "../components/MotionWrapper";
 import Header from "../components/Header";
 import { database } from "../firebase/config";
